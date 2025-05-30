@@ -1,0 +1,295 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Main container for centering the to-do list */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2c2c2c; /* Grayish-black background */
+    overflow-x: hidden;
+}
+
+/* Note-like container for the to-do list */
+.box {
+    background: #fff5cc; /* Light yellow note background */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 100%;
+    width: 800px;
+    max-width: 800px;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px; /* Grid-like texture for note paper */
+    margin-bottom: 11.5px;
+}
+
+
+/* Task list styling */
+.tasks_list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.tasks_list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tasks_list li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+    transform: scale(0.95);
+}
+
+/* Custom checkbox with SVG */
+.checking {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    position: relative;
+    background: #fff;
+    border: 2px solid #2c2c2c;
+    border-radius: 4px;
+}
+
+.checking:checked::after {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%232c2c2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Task label styling */
+.full {
+    flex: 1;
+    font-size: 16px;
+    color: #2c2c2c;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.full:hover {
+    color: #f4c430;
+}
+
+/* Input container */
+.footOfBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f4c430; /* Yellow footer */
+    border-radius: 0 0 10px 10px;
+}
+
+.inp {
+    flex: 1;
+}
+
+#inputOfTask {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 16px;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#inputOfTask:focus {
+    box-shadow: 0 0 5px #2c2c2c;
+}
+
+/* Add button with SVG */
+.plus {
+    width: 40px;
+    height: 40px;
+    background: #2c2c2c;
+    color: #f4c430;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.plus:hover {
+    background: #444;
+    transform: scale(1.1);
+}
+
+.bin:hover {
+    background: #444;
+    transform: scale(1.1);
+}
+
+.plus::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23f4c430" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>');
+}
+
+.bin{
+    width: 40px;
+    height: 40px;
+    background: #2c2c2c;
+    color: #f4c430;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+    .box {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .headOfBox {
+        font-size: 20px;
+    }
+
+    .tasks_list li {
+        padding: 8px;
+    }
+
+    #inputOfTask {
+        font-size: 14px;
+    }
+
+    .plus {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Scrollbar styling for task list */
+.tasks_list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tasks_list::-webkit-scrollbar-track {
+    background: #fff5cc;
+}
+
+.tasks_list::-webkit-scrollbar-thumb {
+    background: #2c2c2c;
+    border-radius: 4px;
+}
+
+.tasks_list::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+/* Animation for task removal */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.tasks_list li.completed {
+    animation: fadeOut 0.5s forwards;
+}
+
+
+.final_child img{
+    display: flex;
+    align-items: center;
+    margin:8px 0;
+    cursor: pointer;
+}
+
+.ttt{
+    background: transparent;
+    border: none;
+}
+
+.final_child:hover{
+    background-color: #d2cfcf6b;
+}
+
+.final_child:hover img{
+    visibility: visible;
+}
+
+.final_child img{
+    padding-left: 27px;
+    visibility: hidden;
+}
+
+.locked {
+  pointer-events: none;
+}
+
+/* Lock hover effects when alarm is being set */
+.final_child.hover-locked:hover {
+    cursor: default; /* No pointer cursor */
+    background-color: #d2cfcf6b; /* No hover background */
+}
+
+.reminder-text {
+    font-family: Arial, sans-serif; /* Clean Nykaa-like font */
+    font-weight: 500;
+}
+
+/* Header styling with title */
+.headOfBox {
+    text-align: center;
+    padding: 15px 0;
+    background: #f4c430; /* Yellow header */
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c2c2c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.small_text{
+    font-size: 12px;
+    padding:0 10px;
+    cursor: pointer;
+
+}
+
+.small_text:hover{
+    text-decoration: underline;
+}
+
+.navopt{
+    margin-right: 10px;
+}
