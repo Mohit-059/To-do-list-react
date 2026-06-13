@@ -197,3 +197,64 @@ body {
         height: 50px; /* 📌 Matches List.js responsive footer */
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 768px){
+
+    .about-box{
+        width: 95%;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .headOfBox{
+        font-size: 18px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px){
+
+    .headOfBox{
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .small_text{
+        font-size: 11px;
+        padding: 0 5px;
+    }
+
+    .about-content{
+        padding: 12px;
+    }
+
+    .about-content h2{
+        font-size: 22px;
+    }
+
+    .about-content h3{
+        font-size: 18px;
+    }
+
+    .about-content p,
+    .about-content li{
+        font-size: 14px;
+    }
+}

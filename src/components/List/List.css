@@ -25,6 +25,7 @@ body {
     width: 100%;
     width: 800px;
     max-width: 800px;
+    /* width: min(95%, 800px); */
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
                       linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
@@ -292,4 +293,87 @@ body {
 
 .navopt{
     margin-right: 10px;
+}
+
+
+
+
+
+
+
+
+
+/* ===== RESPONSIVE FIXES ===== */
+
+@media (max-width: 768px) {
+
+    .box{
+        width: 95%;
+        max-width: 95%;
+        margin: 0 auto;
+    }
+
+    .headOfBox{
+        font-size: 18px;
+        padding: 12px;
+        letter-spacing: 1px;
+    }
+
+    .tasks_list{
+        max-height: 50vh;
+    }
+
+    .final_child{
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .full{
+        min-width: 0;
+        word-break: break-word;
+    }
+
+    .footOfBox{
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px){
+
+    .headOfBox{
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .small_text{
+        font-size: 11px;
+        padding: 0 5px;
+    }
+
+    .footOfBox{
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .inp{
+        width: 100%;
+    }
+
+    .plus,
+    .bin{
+        width: 45px;
+        height: 45px;
+    }
+
+    .final_child img{
+        padding-left: 8px;
+    }
+
+    .reminder-text{
+        display: block;
+        width: 100%;
+        margin-top: 5px;
+    }
 }
